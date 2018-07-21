@@ -14,4 +14,17 @@ $(function(){
       });
     }
   });
+  //ajax post. user 정보 생성 요청
+  $('#submit').click(function(){
+    name = $('#name').val();
+    passwd = $('#password').val();
+    if(name){
+      $.post('/adduser/'+name,{'name':name,'passwd':passwd},function(data){
+        if(data.success) alert("user add success");
+        else alert(data.error);
+      });
+    }else{
+      alert("write your name");
+    }
+  });
 });
